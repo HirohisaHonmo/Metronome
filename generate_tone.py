@@ -13,19 +13,19 @@ def generate_tone(frequency, duration, sample_rate=44100, volume=0.5):
     return audio
 
 # Aの音
-a_frequency = 440
-a_duration = 2
-a_sound = generate_tone(a_frequency, a_duration)
+A_FREQUENCY = 440
+A_DURATION = 2
+a_sound = generate_tone(A_FREQUENCY, A_DURATION)
 write("Sound/A440.wav", 44100, a_sound)
 
 # メトロノームの低い音
-low_click_frequency = 880
-low_click_duration = 0.1
-low_click_sound = generate_tone(low_click_frequency, low_click_duration)
+LOW_CLICK_FREQUENCY = 880
+LOW_CLICK_DURATION = 0.1
+low_click_sound = generate_tone(LOW_CLICK_FREQUENCY, LOW_CLICK_DURATION)
 write("Sound/click_low.wav", 44100, low_click_sound)
 
 # メトロノームの高い音
-high_click_frequency = 1760
-high_click_duration = 0.1
-high_click_sound = generate_tone(high_click_frequency, high_click_duration)
+HIGH_CLICK_FREQUENCY = 1760
+HIGH_CLICK_DURATION = 0.1
+high_click_sound = generate_tone(HIGH_CLICK_FREQUENCY, HIGH_CLICK_DURATION)
 write("Sound/click_high.wav", 44100, high_click_sound)
