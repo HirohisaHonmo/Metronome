@@ -1,7 +1,8 @@
 import pygame
-import flet as ft
+import flet
 import threading
 import time
+from flet import Slider
 
 is_metronome_running = False
 is_playing_a_tone = False
@@ -11,14 +12,14 @@ metronome_interval = 0.5  # 120 BPM に合わせた値を初期値とする。
 pygame.mixer.init()
 
 
-def create_app(page: ft.Page):
-    bpm_label = ft.Text("BPM : 120")
-    bpm_range_label = ft.Text("BPM Range : 40 - 240")
-    bpm_slider = ft.Slider(value=120, min=40, max=240, divisions=200, label="BPM",
+def create_app(page: flet.Page):
+    bpm_label = flet.Text("BPM : 120")
+    bpm_range_label = flet.Text("BPM Range : 40 - 240")
+    bpm_slider:Slider = flet.Slider(value=120, min=40, max=240, divisions=200, label="BPM",
                            on_change=lambda e: update_bpm_from_slider(e, page, bpm_label, bpm_slider))
-    start_button = ft.ElevatedButton(text="Start Metronome", on_click=start_metronome)
-    stop_button = ft.ElevatedButton(text="Stop Sounds", on_click=stop_sounds)
-    tuning_button = ft.ElevatedButton(text="Play 'A' Sound (440 Hz)", on_click=play_a_tone)
+    start_button = flet.ElevatedButton(text="Start Metronome", on_click=start_metronome)
+    stop_button = flet.ElevatedButton(text="Stop Sounds", on_click=stop_sounds)
+    tuning_button = flet.ElevatedButton(text="Play 'A' Sound (440 Hz)", on_click=play_a_tone)
 
     page.add(bpm_label, bpm_range_label, bpm_slider, start_button, stop_button, tuning_button)
 
@@ -78,4 +79,4 @@ def play_a_tone(e):
     a_tone_channel = a_tone.play(-1)
 
 
-ft.app(target=create_app)
+flet.app(target=create_app)
